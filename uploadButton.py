@@ -43,15 +43,15 @@ def app():
 		'inq_last_6mths':rec_data['inq_last_6mths']['S'],
 		'delinq_2yrs':rec_data['delinq_2yrs']['S'],
 		'pub_rec':rec_data['pub_rec']['S'],
-		'not_fully_paid':rec_data['not_fully_paid']['S']
+		'not_fully_paid':rec_data['not_fully_paid']['N']
 
 		})
-		if rec_data['not_fully_paid']['S'] == '0':
+		if rec_data['not_fully_paid']['N'] == '0':
 			fp += 1
-		# postext += item['selftext']['S'] + " " 
+		
 		else:
 			nfp += 1 
-		# negtext += item['selftext']['S'] + " "
+	
 	df_2 = pd.DataFrame(d)
 	st.bar_chart(df_2['not_fully_paid'].value_counts())
 	
